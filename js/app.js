@@ -11,20 +11,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const isLongArticle = featured.content.length > 2;
     
     let featuredHTML = `
-        <article class="featured-post">
+        <article class="featured-post" id="featured-article-card">
             <div class="post-header">
                 <h2>${featured.title}</h2>
                 <span class="date">${featured.date}</span>
             </div>
-            <div class="post-content">
+            <div class="post-content" id="featured-content-body">
     `;
 
     if (isLongArticle) {
-        // Display exactly the first 2 paragraphs
+        // Display exactly the first 2 paragraphs initially
         featuredHTML += featured.content.slice(0, 2).map(p => `<p>${p}</p>`).join('');
-        featuredHTML += `</div><button class="read-more">Read Full Article</button>`;
+        featuredHTML += `</div><button class="read-more" id="read-more-btn">Read Full Article</button>`;
     } else {
-        // Display full article and Bio
+        // Display full article and Bio immediately if short
         featuredHTML += featured.content.map(p => `<p>${p}</p>`).join('');
         featuredHTML += `</div>`;
         featuredHTML += generateBioHTML(featured.authorBio);
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="post-content">
                             <p>${recent.content[0]}</p>
                         </div>
-                        <button class="read-more">Read Full Article</button>
+                        <button class="read-more" onclick="alert('Full article view for recent posts coming soon!')">Read Full Article</button>
                     </article>
                 `;
             }
@@ -56,6 +56,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Render to DOM
     feedContainer.innerHTML = featuredHTML + recentHTML;
+
+    // Attach click handler for Featured Article expansion
+    if (isLongArticle) {
+        const readMoreBtn = document.getElementById('read-more-btn');
+        const contentBody = document.getElementById('featured-content-body');
+        const card = document.getElementById('featured-article-card');
+
+        readMoreBtn.addEventListener('click', () => {
+            // Render remaining paragraphs (from index 2 onwards)
+            const remainingParagraphs = featured.content.slice(2).map(p => `<p>${p}</p>`).join('');
+            contentBody.insertAdjacentHTML('beforeend', remainingParagraphs);
+            
+            // Append Author Bio
+            card.insertAdjacentHTML('beforeend', generateBioHTML(featured.authorBio));
+            
+            // Remove the button after expanding
+            readMoreBtn.remove();
+        });
+    }
 });
 
 // Helper Function to generate Author Bio Block

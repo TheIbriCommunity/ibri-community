@@ -38,16 +38,16 @@ header {
 .logo-box {
     background-color: var(--bg-bone);
     height: 60%; /* Leaves exactly 40% remaining (20% top, 20% bottom) */
-    padding: 0 30px;
+    padding: 0 20px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.logo-box h1 {
-    font-size: 1.8rem;
-    color: var(--brand-green);
-    letter-spacing: 2px;
+.header-logo-img {
+    max-height: 100%;
+    width: auto;
+    object-fit: contain;
 }
 
 /* Hero Section */
@@ -80,6 +80,7 @@ header {
     max-width: 900px;
     margin: 40px auto;
     padding: 0 20px;
+    width: 100%;
 }
 
 /* Articles */
@@ -170,11 +171,17 @@ footer {
     margin-top: auto;
 }
 
-.footer-logo {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
+.footer-logo-img-container {
+    background-color: var(--bg-bone);
+    display: inline-block;
+    padding: 8px 15px;
     margin-bottom: 20px;
-    letter-spacing: 1px;
+}
+
+.footer-logo-img {
+    height: 35px;
+    width: auto;
+    display: block;
 }
 
 .social-icons {
