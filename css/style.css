@@ -38,20 +38,27 @@ header {
 
 .logo-box {
     background-color: var(--bg-bone);
-    height: 60%; /* Exactly 144px tall */
+    height: 60%; 
     width: 400px; 
     max-width: 90vw;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden; /* Strictly crops the zoomed image so it cannot bleed */
+    overflow: hidden; 
+}
+
+/* Forces the clickable link on the article page to strictly fit the box */
+.logo-box a {
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
 .header-logo-img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    transform: scale(2.0); /* Zooms the artwork so the text touches the edges */
+    transform: scale(2.0); 
 }
 
 /* Hero Section */
@@ -201,8 +208,8 @@ footer {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 400px; /* Perfectly matches header box width */
-    height: 144px; /* Perfectly matches header box height */
+    width: 400px; 
+    height: 144px; 
     margin-bottom: 20px;
     overflow: hidden;
 }
@@ -211,7 +218,7 @@ footer {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    transform: scale(2.0); /* Zooms the artwork so the text touches the edges */
+    transform: scale(2.0); 
 }
 
 .social-icons {
