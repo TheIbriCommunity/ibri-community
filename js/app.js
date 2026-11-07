@@ -1,79 +1,94 @@
 document.addEventListener('DOMContentLoaded', () => {
     const feedContainer = document.getElementById('article-feed');
+    const singleArticleContainer = document.getElementById('single-article-view');
     
     if (!posts || posts.length === 0) {
-        feedContainer.innerHTML = '<p>No articles available at this time.</p>';
+        if(feedContainer) feedContainer.innerHTML = '<p>No articles available at this time.</p>';
+        if(singleArticleContainer) singleArticleContainer.innerHTML = '<p>Article not found.</p>';
         return;
     }
 
-    // 1. Process Featured Article (Index 0)
-    const featured = posts[0];
-    const isLongArticle = featured.content.length > 2;
-    
-    let featuredHTML = `
-        <article class="featured-post" id="featured-article-card">
-            <div class="post-header">
-                <h2>${featured.title}</h2>
-                <span class="date">${featured.date}</span>
-            </div>
-            <div class="post-content" id="featured-content-body">
-    `;
-
-    if (isLongArticle) {
-        // Display exactly the first 2 paragraphs initially
-        featuredHTML += featured.content.slice(0, 2).map(p => `<p>${p}</p>`).join('');
-        featuredHTML += `</div><button class="read-more" id="read-more-btn">Read Full Article</button>`;
-    } else {
-        // Display full article and Bio immediately if short
-        featuredHTML += featured.content.map(p => `<p>${p}</p>`).join('');
-        featuredHTML += `</div>`;
-        featuredHTML += generateBioHTML(featured.authorBio);
-    }
-    featuredHTML += `</article>`;
-
-    // 2. Process Recent Articles (Index 1 and 2)
-    let recentHTML = '';
-    if (posts.length > 1) {
-        recentHTML = `<div class="recent-posts-grid">`;
+    // --- LOGIC FOR HOMEPAGE (index.html) ---
+    if (feedContainer) {
+        // 1. Process Featured Article (Index 0)
+        const featured = posts[0];
+        const isLongArticle = featured.content.length > 2;
         
-        for (let i = 1; i <= 2; i++) {
-            if (posts[i]) {
-                const recent = posts[i];
-                recentHTML += `
-                    <article class="recent-post">
-                        <h3>${recent.title}</h3>
-                        <span class="date">${recent.date}</span>
-                        <div class="post-content">
-                            <p>${recent.content[0]}</p>
-                        </div>
-                        <button class="read-more" onclick="alert('Full article view for recent posts coming soon!')">Read Full Article</button>
-                    </article>
-                `;
-            }
+        let featuredHTML = `
+            <article class="featured-post">
+                <div class="post-header">
+                    <h2>${featured.title}</h2>
+                    <span class="date">${featured.date}</span>
+                </div>
+                <div class="post-content">
+        `;
+
+        if (isLongArticle) {
+            // Display exactly the first 2 paragraphs initially, wrap button in an anchor tag to the new page
+            featuredHTML += featured.content.slice(0, 2).map(p => `<p>${p}</p>`).join('');
+            featuredHTML += `</div><a href="article.html?id=0" class="read-more">Read Full Article</a>`;
+        } else {
+            featuredHTML += featured.content.map(p => `<p>${p}</p>`).join('');
+            featuredHTML += `</div>`;
+            featuredHTML += generateBioHTML(featured.authorBio);
         }
-        recentHTML += `</div>`;
+        featuredHTML += `</article>`;
+
+        // 2. Process Recent Articles (Index 1 and 2)
+        let recentHTML = '';
+        if (posts.length > 1) {
+            recentHTML = `<div class="recent-posts-grid">`;
+            for (let i = 1; i <= 2; i++) {
+                if (posts[i]) {
+                    const recent = posts[i];
+                    recentHTML += `
+                        <article class="recent-post">
+                            <h3>${recent.title}</h3>
+                            <span class="date">${recent.date}</span>
+                            <div class="post-content">
+                                <p>${recent.content[0]}</p>
+                            </div>
+                            <a href="article.html?id=${i}" class="read-more">Read Full Article</a>
+                        </article>
+                    `;
+                }
+            }
+            recentHTML += `</div>`;
+        }
+        feedContainer.innerHTML = featuredHTML + recentHTML;
     }
 
-    // Render to DOM
-    feedContainer.innerHTML = featuredHTML + recentHTML;
+    // --- LOGIC FOR SINGLE ARTICLE PAGE (article.html) ---
+    if (singleArticleContainer) {
+        // Get the article ID from the URL (e.g., article.html?id=0)
+        const urlParams = new URLSearchParams(window.location.search);
+        let postId = urlParams.get('id');
+        
+        // If no ID is provided or it's invalid, default to the featured article (0)
+        if (postId === null || !posts[postId]) {
+            postId = 0;
+        }
 
-    // Attach click handler for Featured Article expansion
-    if (isLongArticle) {
-        const readMoreBtn = document.getElementById('read-more-btn');
-        const contentBody = document.getElementById('featured-content-body');
-        const card = document.getElementById('featured-article-card');
-
-        readMoreBtn.addEventListener('click', () => {
-            // Render remaining paragraphs (from index 2 onwards)
-            const remainingParagraphs = featured.content.slice(2).map(p => `<p>${p}</p>`).join('');
-            contentBody.insertAdjacentHTML('beforeend', remainingParagraphs);
-            
-            // Append Author Bio
-            card.insertAdjacentHTML('beforeend', generateBioHTML(featured.authorBio));
-            
-            // Remove the button after expanding
-            readMoreBtn.remove();
-        });
+        const article = posts[postId];
+        
+        let articleHTML = `
+            <article class="full-post">
+                <div class="post-header">
+                    <h2>${article.title}</h2>
+                    <span class="date">${article.date}</span>
+                </div>
+                <div class="post-content">
+        `;
+        
+        // Render every single paragraph/section in the array
+        articleHTML += article.content.map(p => `<p>${p}</p>`).join('');
+        articleHTML += `</div>`;
+        
+        // Always append the author bio at the bottom of the full article page
+        articleHTML += generateBioHTML(article.authorBio);
+        articleHTML += `</article>`;
+        
+        singleArticleContainer.innerHTML = articleHTML;
     }
 });
 
