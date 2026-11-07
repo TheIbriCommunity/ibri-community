@@ -1,4 +1,4 @@
-:root {
+k:root {
     --bg-bone: #F5F1E8;
     --brand-green: #4D5B3F;
     --text-dark: #222222;
@@ -29,7 +29,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Header & Logo Math */
 header {
     background-color: var(--brand-green);
-    height: 240px; /* Substantially taller header to allow the 60% math to yield a larger logo */
+    height: 240px; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -37,19 +37,21 @@ header {
 
 .logo-box {
     background-color: var(--bg-bone);
-    height: 60%; /* Automatically 144px tall, leaving exactly 20% (48px) green above and below */
-    width: 400px; /* Forced width to match the YAHU'SHAR'AL hero text */
+    height: 60%; 
+    width: 400px; 
     max-width: 90vw;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5px; /* Minimized padding to allow maximum image stretch */
+    padding: 0; /* Removed padding to allow the zoomed image to touch the edges */
+    overflow: hidden; /* Hides the invisible image padding so it doesn't bleed */
 }
 
 .header-logo-img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Forces the image to stretch and fill the new 400px wide box */
+    object-fit: contain;
+    transform: scale(1.9); /* Zooms the logo in by 90% to eliminate the transparent dead space */
 }
 
 /* Hero Section */
@@ -198,16 +200,18 @@ footer {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 320px; /* Stretched width for footer */
-    height: 110px; /* Taller height for footer */
+    width: 320px;
+    height: 110px; 
     margin-bottom: 20px;
-    padding: 5px;
+    padding: 0; 
+    overflow: hidden;
 }
 
 .footer-logo-img {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    transform: scale(1.9); /* Zooms the footer logo */
 }
 
 .social-icons {
