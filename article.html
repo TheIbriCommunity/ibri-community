@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Article | YAHU'SHAR'AL</title>
+    <title>The Sabbath Revelation | YAHU'SHAR'AL</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,9 +24,19 @@
         </div>
     </header>
 
-    <!-- Dynamic Single Article Container -->
-    <main id="single-article-view" class="feed-container">
-        <!-- Injected via app.js -->
+    <!-- Native PDF Embed Container -->
+    <main class="feed-container pdf-viewer-container" style="max-width: 1000px;">
+        
+        <!-- The title and download link just in case their browser blocks PDF embedding -->
+        <div class="post-header" style="text-align: center; margin-bottom: 30px;">
+            <a href="docs/the-sabbath-revelation.pdf" target="_blank" class="read-more">Open PDF in New Tab / Download</a>
+        </div>
+
+        <!-- The PDF Viewer -->
+        <object data="docs/the-sabbath-revelation.pdf" type="application/pdf" width="100%" height="900px" style="border: 1px solid rgba(77, 91, 63, 0.2); border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <p>Your browser does not support native PDF viewing. <a href="docs/the-sabbath-revelation.pdf">Click here to download the document.</a></p>
+        </object>
+
     </main>
 
     <!-- Footer -->
@@ -45,8 +55,5 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="js/posts.js"></script>
-    <script src="js/app.js"></script>
 </body>
 </html>
