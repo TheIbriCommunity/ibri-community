@@ -31,10 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
             </article>
         `;
 
-        // The New Newsletter Promo Block
+        // The New Newsletter Promo Block with Icon
         const promoHTML = `
             <div class="newsletter-promo">
                 <div class="promo-content">
+                    <img src="images/yahusharal-scroll-logo.jpg" alt="The Root and The Scroll" class="promo-icon">
                     <h3>YAHU'SHAR'AL The Qodeshym</h3>
                     <p>Join our dedicated subscribers to receive our weekly newsletter directly in your inbox, beginning with our featured publication, <em>The Sabbath Revelation</em>.</p>
                     <a href="newsletter.html" class="promo-btn">Subscribe &amp; Learn More</a>
@@ -64,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
             recentHTML += `</div>`;
         }
         
-        // Render in order: Featured -> Promo -> Recent
         feedContainer.innerHTML = featuredHTML + promoHTML + recentHTML;
     }
 });

@@ -28,38 +28,67 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
 }
 
-/* Header & Logo Math */
+/* Header & Dual Logo Math */
 header {
     background-color: var(--brand-green) !important;
-    height: 240px; 
+    min-height: 240px; 
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
+    padding: 20px 40px;
 }
 
-.logo-box {
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.logo-left {
     background-color: var(--bg-bone);
-    height: 60%; 
+    height: 144px; 
     width: 400px; 
-    max-width: 90vw;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden; 
+    border-radius: 4px;
 }
 
-.logo-box a {
-    display: block;
-    width: 100%;
-    height: 100%;
-}
-
-.header-logo-img {
+.logo-left img {
     width: 100%;
     height: 100%;
     object-fit: contain;
     transform: scale(2.0); 
+}
+
+/* Future Center Navigation */
+.main-nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.logo-right {
+    height: 144px;
+    width: 144px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--brand-gold);
+    background-color: var(--bg-bone);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.logo-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* Hero Section */
@@ -454,10 +483,11 @@ article {
 }
 
 .author-bio img {
-    width: 120px;
-    height: 120px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
     object-fit: cover;
+    border: 2px solid var(--brand-gold);
 }
 
 .bio-info h4 {
@@ -545,6 +575,7 @@ footer {
         padding: 0 !important;
     }
 }
+
 /* =========================================
    NEWSLETTER PROMO BANNER & PAGE STYLES
    ========================================= */
@@ -563,6 +594,18 @@ footer {
     flex-direction: column;
     justify-content: center;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+/* The New Promo Logo Icon */
+.promo-icon {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin: 0 auto 20px auto;
+    border: 2px solid var(--brand-gold);
+    object-fit: cover;
+    display: block;
 }
 
 /* Interlocking Gold Thin Loops */
@@ -573,7 +616,7 @@ footer {
     top: 50%;
     width: 200px;
     height: 200px;
-    border: 2px solid rgba(166, 132, 45, 0.55); /* Gold with slight transparency */
+    border: 2px solid rgba(166, 132, 45, 0.55);
     border-radius: 50%;
     transform: translateY(-50%);
     z-index: 1;
@@ -591,7 +634,8 @@ footer {
 .promo-content {
     position: relative;
     z-index: 2;
-    max-width: 75%;
+    max-width: 85%;
+    margin: 0 auto;
 }
 
 .promo-content h3 {
@@ -638,7 +682,7 @@ footer {
 
 .newsletter-form-wrapper {
     background: rgba(255, 255, 255, 0.35);
-    backdrop-filter: blur(12px); /* Creates the frosted glass effect */
+    backdrop-filter: blur(12px); 
     padding: 50px;
     border-radius: 8px;
     border: 1px solid rgba(166, 132, 45, 0.3);
