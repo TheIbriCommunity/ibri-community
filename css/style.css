@@ -1,9 +1,11 @@
 :root {
     --bg-bone: #F5F1E8;
     --brand-green: #4D5B3F;
+    --brand-gold: #A6842D;
     --text-dark: #222222;
-    --font-heading: 'Playfair Display', serif;
-    --font-body: 'Lora', serif;
+    --text-muted: #767676;
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Lora', Georgia, serif;
 }
 
 * {
@@ -16,7 +18,7 @@ body {
     background-color: var(--bg-bone);
     color: var(--text-dark);
     font-family: var(--font-body);
-    line-height: 1.6;
+    line-height: 1.75;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -47,7 +49,6 @@ header {
     overflow: hidden; 
 }
 
-/* Forces the clickable link on the article page to strictly fit the box */
 .logo-box a {
     display: block;
     width: 100%;
@@ -86,16 +87,140 @@ header {
     color: #555;
 }
 
-/* Feed Container */
+/* Feed & Publication Container */
 .feed-container {
     flex: 1;
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 0 20px;
+    max-width: 860px;
+    margin: 50px auto;
+    padding: 0 24px;
     width: 100%;
 }
 
-/* Articles */
+/* Original Document Typography & Layout */
+.pub-eyebrow {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--brand-gold);
+    margin-bottom: 14px;
+    display: block;
+}
+
+.pub-title {
+    font-size: 3.4rem;
+    font-weight: 700;
+    color: var(--brand-green);
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.pub-subtitle {
+    font-size: 1.45rem;
+    color: #555555;
+    line-height: 1.55;
+    margin-bottom: 24px;
+    font-weight: 400;
+}
+
+.pub-meta {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 1rem;
+    color: #888888;
+    margin-bottom: 45px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+/* Gold Left-Border Callout & Blockquotes */
+.gold-callout {
+    border-left: 4px solid var(--brand-gold);
+    padding: 6px 0 6px 28px;
+    margin: 36px 0;
+    font-style: italic;
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: var(--text-dark);
+}
+
+.gold-callout strong {
+    font-style: italic;
+    font-weight: 700;
+}
+
+/* Major Part Headings with Gold Top Rule */
+.part-divider {
+    border-top: 3px solid var(--brand-gold);
+    margin-top: 65px;
+    padding-top: 28px;
+    margin-bottom: 32px;
+}
+
+.part-divider h2 {
+    font-size: 2.3rem;
+    color: var(--brand-green);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.25;
+    font-weight: 700;
+}
+
+/* Section & Argument Headings */
+.section-heading {
+    font-size: 1.7rem;
+    color: #2C3527;
+    margin-top: 42px;
+    margin-bottom: 18px;
+    font-weight: 700;
+}
+
+.arg-block {
+    margin-top: 48px;
+    margin-bottom: 48px;
+}
+
+.arg-title {
+    font-size: 1.75rem;
+    color: var(--brand-green);
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+.post-content p {
+    margin-bottom: 24px;
+    font-size: 1.25rem;
+    line-height: 1.8;
+}
+
+.rebuttal-label {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+}
+
+.rebuttal-bold-paragraph {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.8;
+    margin-bottom: 24px;
+    color: var(--text-dark);
+}
+
+.post-content ul {
+    margin-bottom: 28px;
+    padding-left: 26px;
+    font-size: 1.25rem;
+    line-height: 1.8;
+}
+
+.post-content li {
+    margin-bottom: 16px;
+}
+
+/* Homepage Feed Specifics */
 article {
     margin-bottom: 50px;
 }
@@ -116,33 +241,15 @@ article {
     margin-top: 5px;
 }
 
-.post-content p {
-    margin-bottom: 22px;
-    font-size: 1.25rem;
-}
-
-.post-content h3 {
-    margin-top: 40px;
-    margin-bottom: 15px;
-    font-size: 1.6rem;
-    color: var(--brand-green);
-}
-
-.post-content ul {
-    margin-bottom: 22px;
-    padding-left: 20px;
-    font-size: 1.25rem;
-}
-
 /* Buttons */
 .read-more {
     display: inline-block;
     background-color: transparent;
     color: var(--brand-green);
     border: 2px solid var(--brand-green);
-    padding: 10px 20px;
+    padding: 12px 24px;
     font-family: var(--font-heading);
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     cursor: pointer;
     text-decoration: none;
     transition: all 0.3s ease;
@@ -157,11 +264,11 @@ article {
 /* Author Bio */
 .author-bio {
     display: flex;
-    gap: 20px;
+    gap: 24px;
     background-color: rgba(77, 91, 63, 0.05);
-    padding: 30px;
+    padding: 35px;
     border-top: 2px solid var(--brand-green);
-    margin-top: 50px;
+    margin-top: 70px;
     align-items: center;
 }
 
@@ -240,20 +347,4 @@ footer {
 .copyright {
     font-size: 1rem;
     opacity: 0.8;
-}
-
-/* Layout for Recent Posts */
-.recent-posts-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 40px;
-    margin-top: 60px;
-    border-top: 1px solid rgba(77, 91, 63, 0.2);
-    padding-top: 40px;
-}
-
-@media (min-width: 768px) {
-    .recent-posts-grid {
-        grid-template-columns: 1fr 1fr;
-    }
 }
