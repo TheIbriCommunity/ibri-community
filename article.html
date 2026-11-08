@@ -26,7 +26,7 @@
 
     <!-- Main Publication Content -->
     <main class="feed-container">
-        <article class="full-post post-content">
+        <article class="full-post post-content" id="printable-article">
             
             <span class="pub-eyebrow">FEATURED PUBLICATION</span>
             <h1 class="pub-title">The Sabbath Revelation</h1>
@@ -322,6 +322,54 @@
                 <li><strong>Ezekiel 3:17 (KJV):</strong> Son of man, I have made thee a watchman unto the house of Israel: therefore hear the word at my mouth, and give them warning from me.</li>
             </ul>
 
+            <!-- CONCLUSION SECTION -->
+            <div class="conclusion-section">
+                <h2>Conclusion: The Watchman's Final Warning</h2>
+                <p>When the full counsel of the scriptural canon, ancient historical records, and prophetic timelines is weighed together, the verdict is inescapable: in this present age of captivity and fallen flesh, it is structurally, legally, and spiritually impossible for human beings to physically observe a seventh-day Sabbath. Deprived of a standing Temple, an active Levitical altar, consecrated covenant soil, and an uncorrupted celestial calendar, any modern attempt to manufacture a weekly physical rest falls short of Torah law and triggers the judgment of James 2:10.</p>
+                <p>More critically, the Word of YAHUAH explicitly declares that these self-appointed observances are not acceptable unto Him. Through the prophets and ancient witnesses—from Hosea 2:11 and Isaiah 1:13–14 to the Epistle of Barnabas 15:6–8—The Most High has made it unmistakably clear that He Himself halted physical sabbaths in exile, that fallen human hands are not clean enough to hallow His sacred time, and that attempting to force a physical Sabbath in polluted lands while tethered to commercial utility grids actively profanes (<em>Chalal</em>) the Sabbath. True covenant faithfulness today is never found in unauthorized human rituals, but in <em>Zakar</em>—guarding the covenant promise of rest within our hearts as we labor through the closing hours of the sixth prophetic day, waiting upon Yahusha Ha'Mashiach, the sole Master of the Sabbath, to return and inaugurate His glorious 1,000-year Millennial Reign.</p>
+            </div>
+
+            <!-- GREEN, BONE & GOLD RESOURCE / SHARE CARD -->
+            <div class="article-actions-card">
+                <div class="actions-header">
+                    <span class="actions-eyebrow">STUDY &amp; DISTRIBUTION TOOLS</span>
+                    <h3>Print, Download, or Share This Revelation</h3>
+                    <p>Distribute this watchman warning via direct link, full PDF, or our ultra-lightweight email attachment edition.</p>
+                </div>
+
+                <div class="actions-button-grid">
+                    <!-- Print Button -->
+                    <button type="button" onclick="window.print()" class="action-btn">
+                        <i class="fa-solid fa-print"></i>
+                        <span>Print Full Study</span>
+                        <span class="btn-subtext">Clean Paper Layout</span>
+                    </button>
+
+                    <!-- Full PDF Download -->
+                    <a href="docs/the-sabbath-revelation.pdf" download="The-Sabbath-Revelation-Yahusharal.pdf" class="action-btn">
+                        <i class="fa-solid fa-file-pdf"></i>
+                        <span>Download Official PDF</span>
+                        <span class="btn-subtext">18-Page Master Document</span>
+                    </a>
+
+                    <!-- Lightweight Email Edition Download -->
+                    <button type="button" onclick="downloadEmailEdition()" class="action-btn">
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                        <span>Email-Ready File</span>
+                        <span class="btn-subtext">Lightweight HTML (~18 KB)</span>
+                    </button>
+                </div>
+
+                <!-- Copy Share Link Bar -->
+                <div class="share-link-container">
+                    <div class="share-url-display" id="share-url-text">https://theibricommunity.github.io/ibri-community/article.html</div>
+                    <button type="button" onclick="copyShareLink()" class="copy-link-btn" id="copy-link-button">
+                        <i class="fa-solid fa-link"></i>
+                        <span>Copy Link to Share</span>
+                    </button>
+                </div>
+            </div>
+
             <!-- Author Bio -->
             <div class="author-bio">
                 <img src="images/ibri-community-network-icon.png" alt="Elder ObedYahu and Elder DevorahYahu">
@@ -351,6 +399,80 @@
             <p class="copyright">&copy; 2026 YAHU'SHAR'AL | Published by The Ibri Community</p>
         </div>
     </footer>
+
+    <!-- Share & Lightweight Download Scripts -->
+    <script>
+        // Automatically display the live URL in the share box
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlDisplay = document.getElementById('share-url-text');
+            if (urlDisplay && window.location.href.startsWith('http')) {
+                urlDisplay.textContent = window.location.href;
+            }
+        });
+
+        // One-Click Copy Link to Clipboard
+        function copyShareLink() {
+            const shareUrl = window.location.href;
+            const copyBtn = document.getElementById('copy-link-button');
+            
+            navigator.clipboard.writeText(shareUrl).then(() => {
+                const originalHTML = copyBtn.innerHTML;
+                copyBtn.innerHTML = '<i class="fa-solid fa-check"></i><span>Link Copied!</span>';
+                copyBtn.style.backgroundColor = '#F5F1E8';
+                copyBtn.style.color = '#4D5B3F';
+                
+                setTimeout(() => {
+                    copyBtn.innerHTML = originalHTML;
+                    copyBtn.style.backgroundColor = '';
+                    copyBtn.style.color = '';
+                }, 3000);
+            });
+        }
+
+        // Generate Ultra-Lightweight (~18 KB) Self-Contained Email Edition
+        function downloadEmailEdition() {
+            const articleClone = document.getElementById('printable-article').cloneNode(true);
+            const actionCard = articleClone.querySelector('.article-actions-card');
+            if (actionCard) actionCard.remove();
+            const bioImg = articleClone.querySelector('.author-bio img');
+            if (bioImg) bioImg.remove();
+
+            const emailHTML = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Sabbath Revelation | YAHU'SHAR'AL Study Edition</title>
+<style>
+    body { background-color: #F5F1E8; color: #222222; font-family: Georgia, serif; line-height: 1.75; max-width: 800px; margin: 40px auto; padding: 0 24px; }
+    h1, h2, h3, h4 { color: #4D5B3F; }
+    .pub-eyebrow { font-family: sans-serif; font-size: 0.85rem; font-weight: bold; letter-spacing: 2px; color: #A6842D; text-transform: uppercase; display: block; margin-bottom: 10px; }
+    .pub-title { font-size: 2.8rem; margin-bottom: 15px; }
+    .pub-subtitle { font-size: 1.3rem; color: #555; margin-bottom: 20px; }
+    .pub-meta { font-family: sans-serif; font-size: 0.95rem; color: #777; margin-bottom: 35px; }
+    .pub-meta span { margin-right: 20px; }
+    .gold-callout { border-left: 4px solid #A6842D; padding-left: 20px; margin: 28px 0; font-style: italic; font-size: 1.2rem; }
+    .part-divider { border-top: 3px solid #A6842D; margin-top: 50px; padding-top: 20px; }
+    .conclusion-section { border-top: 3px solid #A6842D; border-bottom: 3px solid #A6842D; background: rgba(77,91,63,0.06); padding: 28px; margin: 50px 0; }
+    .author-bio { border-top: 2px solid #4D5B3F; padding-top: 25px; margin-top: 50px; }
+</style>
+</head>
+<body>
+${articleClone.innerHTML}
+<p style="text-align:center; margin-top:40px; font-size:0.9rem; color:#666;">Published by YAHU'SHAR'AL | The Ibri Community (${window.location.href})</p>
+</body>
+</html>`;
+
+            const blob = new Blob([emailHTML], { type: 'text/html;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'The-Sabbath-Revelation-Email-Edition.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
 
 </body>
 </html>

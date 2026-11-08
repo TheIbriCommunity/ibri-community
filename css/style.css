@@ -220,6 +220,187 @@ header {
     margin-bottom: 16px;
 }
 
+/* Conclusion Section */
+.conclusion-section {
+    border-top: 3px solid var(--brand-gold);
+    border-bottom: 3px solid var(--brand-gold);
+    background-color: rgba(77, 91, 63, 0.04);
+    padding: 40px 32px;
+    margin-top: 65px;
+    margin-bottom: 45px;
+}
+
+.conclusion-section h2 {
+    font-size: 2.1rem;
+    color: var(--brand-green);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 22px;
+    font-weight: 700;
+}
+
+.conclusion-section p:last-child {
+    margin-bottom: 0;
+}
+
+/* Action & Share Toolbar Card (Green, Bone & Gold) */
+.article-actions-card {
+    background-color: var(--brand-green);
+    color: var(--bg-bone);
+    border: 2px solid var(--brand-gold);
+    border-radius: 6px;
+    padding: 32px;
+    margin: 45px 0 60px 0;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.actions-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.actions-eyebrow {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--brand-gold);
+    display: block;
+    margin-bottom: 6px;
+}
+
+.actions-header h3 {
+    font-size: 1.7rem;
+    color: var(--bg-bone);
+    font-weight: 700;
+}
+
+.actions-header p {
+    font-size: 1.05rem !important;
+    color: rgba(245, 241, 232, 0.88);
+    margin-top: 6px;
+    margin-bottom: 0 !important;
+}
+
+.actions-button-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+@media (min-width: 680px) {
+    .actions-button-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--bg-bone);
+    color: var(--brand-green);
+    border: 2px solid var(--brand-gold);
+    border-radius: 4px;
+    padding: 16px 14px;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.action-btn i {
+    font-size: 1.45rem;
+    color: var(--brand-gold);
+    margin-bottom: 8px;
+    transition: color 0.25s ease;
+}
+
+.action-btn .btn-subtext {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: #555;
+    margin-top: 4px;
+    transition: color 0.25s ease;
+}
+
+.action-btn:hover {
+    background-color: var(--brand-gold);
+    color: var(--bg-bone);
+    border-color: var(--bg-bone);
+    transform: translateY(-2px);
+}
+
+.action-btn:hover i,
+.action-btn:hover .btn-subtext {
+    color: var(--bg-bone);
+}
+
+/* Share Link Bar */
+.share-link-container {
+    background-color: rgba(0, 0, 0, 0.18);
+    border: 1px solid var(--brand-gold);
+    border-radius: 4px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+@media (min-width: 680px) {
+    .share-link-container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.share-url-display {
+    font-family: monospace;
+    font-size: 0.95rem;
+    color: var(--bg-bone);
+    background-color: rgba(245, 241, 232, 0.1);
+    padding: 10px 14px;
+    border-radius: 3px;
+    border: 1px solid rgba(166, 132, 45, 0.5);
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    user-select: all;
+}
+
+.copy-link-btn {
+    background-color: var(--brand-gold);
+    color: var(--bg-bone);
+    border: 2px solid var(--bg-bone);
+    border-radius: 4px;
+    padding: 10px 22px;
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    white-space: nowrap;
+    transition: all 0.25s ease;
+}
+
+.copy-link-btn:hover {
+    background-color: var(--bg-bone);
+    color: var(--brand-green);
+    border-color: var(--brand-gold);
+}
+
 /* Homepage Feed Specifics */
 article {
     margin-bottom: 50px;
@@ -268,7 +449,7 @@ article {
     background-color: rgba(77, 91, 63, 0.05);
     padding: 35px;
     border-top: 2px solid var(--brand-green);
-    margin-top: 70px;
+    margin-top: 50px;
     align-items: center;
 }
 
@@ -347,4 +528,20 @@ footer {
 .copyright {
     font-size: 1rem;
     opacity: 0.8;
+}
+
+/* Clean Print Formatting */
+@media print {
+    header, footer, .article-actions-card {
+        display: none !important;
+    }
+    body {
+        background-color: #FFFFFF !important;
+        color: #000000 !important;
+    }
+    .feed-container {
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
 }
