@@ -545,3 +545,159 @@ footer {
         padding: 0 !important;
     }
 }
+/* =========================================
+   NEWSLETTER PROMO BANNER & PAGE STYLES
+   ========================================= */
+
+/* Promo Box (Green Haze with Interlocking Gold Loops) */
+.newsletter-promo {
+    position: relative;
+    background: linear-gradient(135deg, rgba(77, 91, 63, 0.96), rgba(77, 91, 63, 0.85)), var(--brand-green);
+    overflow: hidden;
+    padding: 55px 45px;
+    border-radius: 6px;
+    border: 1px solid var(--brand-gold);
+    color: var(--bg-bone);
+    margin: 50px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Interlocking Gold Thin Loops */
+.newsletter-promo::before,
+.newsletter-promo::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 200px;
+    height: 200px;
+    border: 2px solid rgba(166, 132, 45, 0.55); /* Gold with slight transparency */
+    border-radius: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.newsletter-promo::before {
+    right: -40px;
+}
+
+.newsletter-promo::after {
+    right: 60px;
+}
+
+/* Promo Text Content */
+.promo-content {
+    position: relative;
+    z-index: 2;
+    max-width: 75%;
+}
+
+.promo-content h3 {
+    font-size: 2.3rem;
+    color: var(--brand-gold);
+    margin-bottom: 12px;
+}
+
+.promo-content p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: rgba(245, 241, 232, 0.95);
+}
+
+.promo-btn {
+    background-color: var(--bg-bone);
+    color: var(--brand-green);
+    border: 2px solid var(--brand-gold);
+    padding: 12px 32px;
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.promo-btn:hover {
+    background-color: var(--brand-gold);
+    color: var(--bg-bone);
+    border-color: var(--bg-bone);
+}
+
+/* Haze Swirl Background for Dedicated Newsletter Page */
+.newsletter-page-body {
+    background: 
+        radial-gradient(circle at 15% 30%, rgba(166, 132, 45, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 85% 70%, rgba(77, 91, 63, 0.1) 0%, transparent 50%),
+        var(--bg-bone);
+}
+
+.newsletter-form-wrapper {
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(12px); /* Creates the frosted glass effect */
+    padding: 50px;
+    border-radius: 8px;
+    border: 1px solid rgba(166, 132, 45, 0.3);
+    margin: 40px auto 80px auto;
+    max-width: 700px;
+    text-align: center;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.06);
+}
+
+.newsletter-form-wrapper h2 {
+    font-size: 2.8rem;
+    color: var(--brand-green);
+    margin-bottom: 18px;
+}
+
+.newsletter-form-wrapper p {
+    font-size: 1.25rem;
+    color: #444;
+    margin-bottom: 35px;
+    line-height: 1.6;
+}
+
+.newsletter-form input {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 22px;
+    border: 1px solid rgba(77, 91, 63, 0.5);
+    background: rgba(255, 255, 255, 0.7);
+    font-family: var(--font-body);
+    font-size: 1.15rem;
+    color: var(--text-dark);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.newsletter-form input:focus {
+    outline: none;
+    border-color: var(--brand-gold);
+    background: #ffffff;
+    box-shadow: 0 0 8px rgba(166, 132, 45, 0.2);
+}
+
+.newsletter-form button {
+    background-color: var(--brand-green);
+    color: var(--bg-bone);
+    border: 2px solid var(--brand-gold);
+    padding: 16px 32px;
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    background-color: var(--brand-gold);
+    color: var(--bg-bone);
+    border-color: var(--bg-bone);
+    transform: translateY(-2px);
+}

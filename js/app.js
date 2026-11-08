@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const featured = posts[0];
         
         let featuredHTML = `
-            <article class="featured-post" style="border-bottom: 1px solid rgba(77, 91, 63, 0.2); padding-bottom: 50px; margin-bottom: 50px;">
+            <article class="featured-post">
                 <span class="pub-eyebrow">FEATURED PUBLICATION</span>
                 <h2 class="pub-title" style="font-size: 3rem; margin-bottom: 15px;">${featured.title}</h2>
                 <p class="pub-subtitle" style="font-size: 1.3rem; margin-bottom: 25px;">${featured.content[0]}</p>
@@ -31,7 +31,18 @@ document.addEventListener('DOMContentLoaded', () => {
             </article>
         `;
 
-        // Process Recent Articles (Index 1 and 2) if they exist
+        // The New Newsletter Promo Block
+        const promoHTML = `
+            <div class="newsletter-promo">
+                <div class="promo-content">
+                    <h3>YAHU'SHAR'AL The Qodeshym</h3>
+                    <p>Join our dedicated subscribers to receive our weekly newsletter directly in your inbox, beginning with our featured publication, <em>The Sabbath Revelation</em>.</p>
+                    <a href="newsletter.html" class="promo-btn">Subscribe &amp; Learn More</a>
+                </div>
+            </div>
+        `;
+
+        // Process Recent Articles
         let recentHTML = '';
         if (posts.length > 1) {
             recentHTML = `<div class="recent-posts-grid">`;
@@ -45,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="post-content">
                                 <p>${recent.content[0]}</p>
                             </div>
-                            <!-- Note: Future articles will need their own dedicated HTML pages or URL parameters -->
                             <a href="#" class="read-more">Read Full Article</a>
                         </article>
                     `;
@@ -53,6 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             recentHTML += `</div>`;
         }
-        feedContainer.innerHTML = featuredHTML + recentHTML;
+        
+        // Render in order: Featured -> Promo -> Recent
+        feedContainer.innerHTML = featuredHTML + promoHTML + recentHTML;
     }
 });
