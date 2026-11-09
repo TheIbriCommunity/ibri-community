@@ -1,3 +1,4 @@
+cat << 'EOF' > live.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,12 +59,21 @@
     </header>
 
     <main class="player-wrapper">
-        <video-js id="ibricommunity-player" class="video-js vjs-big-play-centered" controls preload="auto" data-setup='{"fluid": true}'>
-            <source src="https://stream.ibricommunity.org/hls/test.m3u8" type="application/x-mpegURL">
-            <p class="vjs-no-js">
-                To view this video please enable JavaScript.
-            </p>
-        </video-js>
+        <div style="position: relative;">
+            <!-- Video Player -->
+            <video-js id="ibricommunity-player" class="video-js vjs-big-play-centered" controls preload="auto" data-setup='{"fluid": true}'>
+                <source src="https://stream.ibricommunity.org/hls/test.m3u8" type="application/x-mpegURL">
+                <p class="vjs-no-js">To view this video please enable JavaScript.</p>
+            </video-js>
+            
+            <!-- VDO.ninja Request to Join Button -->
+            <button id="join-request-btn" style="position: absolute; bottom: 20px; right: 20px; z-index: 10; background-color: #006400; color: #F5F1E8; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; font-family: 'Playfair Display', serif; font-weight: bold;">
+                Request to Join
+            </button>
+        </div>
+        
+        <!-- Hidden VDO.ninja container -->
+        <div id="vdo-container" style="display:none; width:100%; height:400px; margin-top:20px;"></div>
     </main>
 
     <footer>
@@ -73,6 +83,7 @@
     <script src="https://vjs.zencdn.net/8.6.1/video.min.js"></script>
     
     <script>
+        // 1. Initialize Player
         var player = videojs('ibricommunity-player', {
             liveui: true,
             errorDisplay: false 
@@ -84,6 +95,27 @@
                 console.log("Stream is currently offline.");
             }
         });
+
+        // 2. VDO.ninja Interaction Logic
+        const joinBtn = document.getElementById('join-request-btn');
+        const vdoContainer = document.getElementById('vdo-container');
+        let vdoIframe = null;
+
+        joinBtn.addEventListener('click', function() {
+            joinBtn.style.display = 'none';
+            player.pause();
+            vdoContainer.style.display = 'block';
+
+            vdoIframe = document.createElement("iframe");
+            vdoIframe.allow = "camera;microphone;fullscreen;display-capture;autoplay;";
+            vdoIframe.src = "https://vdo.ninja/?room=ibricommunity_live&cleanoutput"; 
+            vdoIframe.style.width = "100%";
+            vdoIframe.style.height = "100%";
+            vdoIframe.style.border = "none";
+            
+            vdoContainer.appendChild(vdoIframe);
+        });
     </script>
 </body>
 </html>
+EOF
