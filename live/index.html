@@ -3,99 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YAHU'SHAR'AL | Live Broadcast</title>
-    
+    <title>YAHU'SHAR'AL | The Qodeshym - Live Broadcast</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    
     <!-- FontAwesome for Social Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- EXACT HOMEPAGE STYLESHEET -->
+    <!-- Exact Homepage Stylesheet -->
     <link rel="stylesheet" href="/css/style.css">
-    
     <!-- Video.js CSS -->
     <link href="https://vjs.zencdn.net/8.6.1/video-js.css" rel="stylesheet" />
-
     <!-- Umami Analytics -->
     <script defer src="https://analytics.ibricommunity.org/script.js" data-website-id="1b658e9d-6058-48a4-956b-c53b0ac47988"></script>
 
     <style>
-        /* Player-Specific Styling */
-        .player-wrapper {
+        /* Override feed-container max-width slightly for a wider 16:9 broadcast player while keeping flex: 1 and width: 100% */
+        .live-main-container {
             max-width: 1000px;
-            margin: 60px auto;
-            padding: 0 20px;
-            min-height: 50vh;
         }
+
         .video-container {
             position: relative;
-            background: #000;
-            border-radius: 8px;
-            box-shadow: 0px 8px 24px rgba(0,0,0,0.15);
+            width: 100%;
+            height: 540px;
+            background-color: #000000;
+            border: 2px solid var(--brand-gold);
+            border-radius: 6px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
             overflow: hidden;
-            width: 100%;
-            /* This forces the player to stay open even when the stream is offline */
-            aspect-ratio: 16 / 9; 
         }
+
         .video-js {
-            width: 100%;
-            height: 100%;
+            width: 100% !important;
+            height: 100% !important;
         }
+
         .vjs-error-display {
             display: none !important;
         }
+
         .custom-offline-overlay {
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #000;
+            background-color: #000000;
             color: #D8C7A1;
-            font-family: 'Playfair Display', serif;
+            font-family: var(--font-heading);
             font-size: 1.6rem;
+            text-align: center;
+            padding: 20px;
             z-index: 10;
         }
+
         #join-request-btn {
             position: absolute;
             bottom: 25px;
             right: 25px;
             z-index: 99;
-            background-color: #4D5B3F;
-            color: #F5F1E8;
-            padding: 12px 20px;
-            border: 2px solid #A67C2E;
-            border-radius: 6px;
+            background-color: var(--brand-green);
+            color: var(--bg-bone);
+            padding: 12px 24px;
+            border: 2px solid var(--brand-gold);
+            border-radius: 4px;
             cursor: pointer;
-            font-family: 'Playfair Display', serif;
-            font-weight: bold;
-            font-size: 1rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            transition: background-color 0.2s ease;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.05rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            transition: all 0.25s ease;
         }
+
         #join-request-btn:hover {
-            background-color: #3b4630;
+            background-color: var(--brand-gold);
+            color: var(--bg-bone);
+            border-color: var(--bg-bone);
         }
+
         #vdo-container {
             display: none;
             width: 100%;
-            height: 500px;
-            margin-top: 20px;
-            border-radius: 8px;
+            height: 540px;
+            margin-top: 24px;
+            border: 2px solid var(--brand-gold);
+            border-radius: 6px;
             overflow: hidden;
-            box-shadow: 0px 8px 24px rgba(0,0,0,0.15);
+            background-color: #000000;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
         }
     </style>
 </head>
 <body>
 
-    <!-- EXACT HOMEPAGE HEADER -->
+    <!-- Header (Dual Logos) -->
     <header>
         <div class="header-container">
-            <a href="/" class="logo-left">
+            <a href="/index.html" class="logo-left">
                 <img src="/images/ibri-community-network-primary-logo.png" alt="YAHU'SHAR'AL Logo">
             </a>
             
@@ -107,21 +115,33 @@
         </div>
     </header>
 
-    <!-- LIVE BROADCAST PLAYER -->
-    <main class="player-wrapper">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>YAHU'SHAR'AL</h2>
+            <h3>Live Broadcast</h3>
+            <p class="tagline">Covenant • Community • Self-Sufficiency | For the Qodeshym</p>
+        </div>
+    </section>
+
+    <!-- Live Broadcast Player Feed -->
+    <main class="feed-container live-main-container">
         <div class="video-container">
-            <video-js id="ibricommunity-player" class="video-js vjs-big-play-centered" controls preload="auto" data-setup='{"fluid": false}'>
+            <video-js id="ibricommunity-player" class="video-js vjs-big-play-centered" controls preload="auto">
                 <source src="https://stream.ibricommunity.org/hls/test.m3u8" type="application/x-mpegURL">
-                <p class="vjs-no-js">To view this video please enable JavaScript.</p>
             </video-js>
             
+            <div id="offline-msg" class="custom-offline-overlay">
+                Broadcast is currently offline. Waiting for stream...
+            </div>
+
             <button id="join-request-btn">Request to Join</button>
         </div>
         
         <div id="vdo-container"></div>
     </main>
 
-    <!-- EXACT HOMEPAGE FOOTER -->
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-logo-img-container">
@@ -137,18 +157,24 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="/js/app.js"></script>
+    <!-- Video.js Script -->
     <script src="https://vjs.zencdn.net/8.6.1/video.min.js"></script>
-    
     <script>
-        var player = videojs('ibricommunity-player', { liveui: true });
+        var player = videojs('ibricommunity-player', {
+            liveui: true,
+            fluid: false,
+            errorDisplay: false
+        });
+
+        var offlineMsg = document.getElementById('offline-msg');
+
+        // Hide offline overlay automatically as soon as stream begins playing
+        player.on('playing', function() {
+            offlineMsg.style.display = 'none';
+        });
 
         player.on('error', function() {
-            var overlay = document.createElement('div');
-            overlay.className = 'custom-offline-overlay';
-            overlay.innerHTML = 'Broadcast is currently offline. Waiting for stream...';
-            player.el().appendChild(overlay);
+            offlineMsg.style.display = 'flex';
         });
 
         const joinBtn = document.getElementById('join-request-btn');
