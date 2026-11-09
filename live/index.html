@@ -4,15 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YAHU'SHAR'AL The Qodeshym - Live Broadcast</title>
-
-    <!-- Brand Typography -->
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-    
-    <!-- Video.js CSS -->
     <link href="https://vjs.zencdn.net/8.6.1/video-js.css" rel="stylesheet" />
-
     <style>
-        /* Approved Brand Color Specifications */
         :root {
             --deep-olive: #4D5B3F;
             --bronze-gold: #A67C2E;
@@ -20,7 +14,6 @@
             --deep-charcoal: #2B2B28;
             --off-white-bone: #F5F1E8;
         }
-
         body {
             background-color: var(--off-white-bone); 
             margin: 0;
@@ -28,28 +21,24 @@
             font-family: 'Lora', serif;
             color: var(--deep-charcoal);
         }
-
         header, footer {
-            background-color: var(--deep-olive); /* Official Deep Olive #4D5B3F */
+            background-color: var(--deep-olive);
             color: var(--off-white-bone);
             padding: 2rem 1rem;
             text-align: center;
             font-family: 'Playfair Display', serif;
-            border-bottom: 4px solid var(--bronze-gold); /* Bronze Gold Accent */
+            border-bottom: 4px solid var(--bronze-gold);
         }
-
         footer {
             border-top: 4px solid var(--bronze-gold);
             border-bottom: none;
         }
-
         h1 {
             margin: 0;
             font-size: 2.2rem;
             letter-spacing: 1px;
             color: var(--off-white-bone);
         }
-
         .tagline {
             font-family: 'Lora', serif;
             font-style: italic;
@@ -57,13 +46,11 @@
             margin-top: 8px;
             font-size: 1.05rem;
         }
-
         .player-wrapper {
             max-width: 1000px;
             margin: 40px auto;
             padding: 0 20px;
         }
-
         .video-container {
             position: relative;
             background: #000;
@@ -71,12 +58,9 @@
             box-shadow: 0px 8px 24px rgba(0,0,0,0.15);
             overflow: hidden;
         }
-
         .video-js {
             width: 100%;
         }
-
-        /* Approved Brand Button Styling */
         #join-request-btn {
             position: absolute;
             bottom: 25px;
@@ -92,13 +76,10 @@
             font-weight: bold;
             font-size: 1rem;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            transition: background-color 0.2s ease;
         }
-
         #join-request-btn:hover {
             background-color: #3b4630;
         }
-
         #vdo-container {
             display: none;
             width: 100%;
@@ -111,64 +92,39 @@
     </style>
 </head>
 <body>
-
     <header>
         <h1>The Ibri Community Network</h1>
         <div class="tagline">Covenant • Community • Self-Sufficiency | For the Qodeshym</div>
     </header>
-
     <main class="player-wrapper">
         <div class="video-container">
-            <!-- Video Player with Native HLS Fallback -->
-            <video-js id="ibricommunity-player" class="video-js vjs-big-play-centered" controls preload="auto" data-setup='{"fluid": true, "html5": {"vhs": {"overrideNative": true}}}'>
+            <video-js id="ibricommunity-player" class="video-js vjs-big-play-centered" controls preload="auto" data-setup='{"fluid": true}'>
                 <source src="https://stream.ibricommunity.org/hls/test.m3u8" type="application/x-mpegURL">
-                <p class="vjs-no-js">To view this video please enable JavaScript, or upgrade to a web browser that supports HTML5 video.</p>
+                <p class="vjs-no-js">To view this video please enable JavaScript.</p>
             </video-js>
-            
-            <!-- VDO.ninja Request to Join Button -->
             <button id="join-request-btn">Request to Join</button>
         </div>
-        
-        <!-- Hidden VDO.ninja container -->
         <div id="vdo-container"></div>
     </main>
-
     <footer>
         <p>© 2026 The Ibri Community Network. All Rights Reserved.</p>
     </footer>
-
-    <!-- Video.js Script -->
     <script src="https://vjs.zencdn.net/8.6.1/video.min.js"></script>
-    
     <script>
-        var player = videojs('ibricommunity-player', {
-            liveui: true,
-            errorDisplay: true 
-        });
-
-        player.on('error', function() {
-            var error = player.error();
-            if (error) {
-                console.log("Stream status: Offline or waiting for OBS broadcast (" + error.message + ").");
-            }
-        });
-
+        var player = videojs('ibricommunity-player', { liveui: true });
         const joinBtn = document.getElementById('join-request-btn');
         const vdoContainer = document.getElementById('vdo-container');
         let vdoIframe = null;
-
         joinBtn.addEventListener('click', function() {
             joinBtn.style.display = 'none';
             player.pause();
             vdoContainer.style.display = 'block';
-
             vdoIframe = document.createElement("iframe");
             vdoIframe.allow = "camera;microphone;fullscreen;display-capture;autoplay;";
             vdoIframe.src = "https://vdo.ninja/?room=ibricommunity_live&cleanoutput"; 
             vdoIframe.style.width = "100%";
             vdoIframe.style.height = "100%";
             vdoIframe.style.border = "none";
-            
             vdoContainer.appendChild(vdoIframe);
         });
     </script>
