@@ -30,7 +30,7 @@
         }
 
         header, footer {
-            background-color: var(--deep-olive); /* Official Deep Olive */
+            background-color: var(--deep-olive); /* Official Deep Olive #4D5B3F */
             color: var(--off-white-bone);
             padding: 2rem 1rem;
             text-align: center;
@@ -119,10 +119,10 @@
 
     <main class="player-wrapper">
         <div class="video-container">
-            <!-- Video Player -->
-            <video-js id="ibricommunity-player" class="video-js vjs-big-play-centered" controls preload="auto" data-setup='{"fluid": true}'>
+            <!-- Video Player with Native HLS Fallback -->
+            <video-js id="ibricommunity-player" class="video-js vjs-big-play-centered" controls preload="auto" data-setup='{"fluid": true, "html5": {"vhs": {"overrideNative": true}}}'>
                 <source src="https://stream.ibricommunity.org/hls/test.m3u8" type="application/x-mpegURL">
-                <p class="vjs-no-js">To view this video please enable JavaScript.</p>
+                <p class="vjs-no-js">To view this video please enable JavaScript, or upgrade to a web browser that supports HTML5 video.</p>
             </video-js>
             
             <!-- VDO.ninja Request to Join Button -->
@@ -137,18 +137,19 @@
         <p>© 2026 The Ibri Community Network. All Rights Reserved.</p>
     </footer>
 
+    <!-- Video.js Script -->
     <script src="https://vjs.zencdn.net/8.6.1/video.min.js"></script>
     
     <script>
         var player = videojs('ibricommunity-player', {
             liveui: true,
-            errorDisplay: false 
+            errorDisplay: true 
         });
 
         player.on('error', function() {
             var error = player.error();
-            if (error && error.code === 4) {
-                console.log("Stream is currently offline.");
+            if (error) {
+                console.log("Stream status: Offline or waiting for OBS broadcast (" + error.message + ").");
             }
         });
 
