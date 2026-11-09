@@ -3,73 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YAHU'SHAR'AL The Qodeshym - Live Broadcast</title>
-
-    <!-- Brand Typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <title>YAHU'SHAR'AL | Live Broadcast</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- EXACT HOMEPAGE STYLESHEET -->
+    <link rel="stylesheet" href="/css/style.css">
     
     <!-- Video.js CSS -->
     <link href="https://vjs.zencdn.net/8.6.1/video-js.css" rel="stylesheet" />
 
+    <!-- Umami Analytics -->
+    <script defer src="https://analytics.ibricommunity.org/script.js" data-website-id="1b658e9d-6058-48a4-956b-c53b0ac47988"></script>
+
     <style>
-        :root {
-            --deep-olive: #4D5B3F;
-            --bronze-gold: #A67C2E;
-            --warm-sand: #D8C7A1;
-            --deep-charcoal: #2B2B28;
-            --off-white-bone: #F5F1E8;
-        }
-
-        body {
-            background-color: var(--off-white-bone); 
-            margin: 0;
-            padding: 0;
-            font-family: 'Lora', serif;
-            color: var(--deep-charcoal);
-        }
-
-        /* Mirrored Homepage Header Layout */
-        header {
-            background-color: var(--deep-olive);
-            border-bottom: 4px solid var(--bronze-gold);
-            padding: 1rem 0;
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 4%;
-        }
-
-        .logo-left img, .logo-right img {
-            max-height: 95px;
-            width: auto;
-            display: block;
-        }
-
-        /* Circular clipping for the scroll logo to match homepage */
-        .logo-right img {
-            border-radius: 50%;
-        }
-
-        footer {
-            background-color: var(--deep-olive);
-            color: var(--off-white-bone);
-            padding: 1.5rem 1rem;
-            text-align: center;
-            border-top: 4px solid var(--bronze-gold);
-            font-family: 'Playfair Display', serif;
-        }
-
+        /* Only Player-Specific Styling */
         .player-wrapper {
             max-width: 1000px;
-            margin: 40px auto;
+            margin: 60px auto;
             padding: 0 20px;
+            min-height: 50vh;
         }
-
         .video-container {
             position: relative;
             background: #000;
@@ -77,17 +37,12 @@
             box-shadow: 0px 8px 24px rgba(0,0,0,0.15);
             overflow: hidden;
         }
-
         .video-js {
             width: 100%;
         }
-
-        /* Hide the default Video.js error dialog */
         .vjs-error-display {
             display: none !important;
         }
-
-        /* Custom Offline Screen Styling */
         .custom-offline-overlay {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -95,21 +50,20 @@
             align-items: center;
             justify-content: center;
             background: #000;
-            color: var(--warm-sand);
+            color: #D8C7A1;
             font-family: 'Playfair Display', serif;
             font-size: 1.6rem;
             z-index: 10;
         }
-
         #join-request-btn {
             position: absolute;
             bottom: 25px;
             right: 25px;
             z-index: 99;
-            background-color: var(--deep-olive);
-            color: var(--off-white-bone);
+            background-color: #4D5B3F;
+            color: #F5F1E8;
             padding: 12px 20px;
-            border: 2px solid var(--bronze-gold);
+            border: 2px solid #A67C2E;
             border-radius: 6px;
             cursor: pointer;
             font-family: 'Playfair Display', serif;
@@ -118,11 +72,9 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
             transition: background-color 0.2s ease;
         }
-
         #join-request-btn:hover {
             background-color: #3b4630;
         }
-
         #vdo-container {
             display: none;
             width: 100%;
@@ -136,6 +88,7 @@
 </head>
 <body>
 
+    <!-- EXACT HOMEPAGE HEADER -->
     <header>
         <div class="header-container">
             <a href="/" class="logo-left">
@@ -150,6 +103,7 @@
         </div>
     </header>
 
+    <!-- LIVE BROADCAST PLAYER -->
     <main class="player-wrapper">
         <div class="video-container">
             <video-js id="ibricommunity-player" class="video-js vjs-big-play-centered" controls preload="auto" data-setup='{"fluid": true}'>
@@ -163,16 +117,29 @@
         <div id="vdo-container"></div>
     </main>
 
+    <!-- EXACT HOMEPAGE FOOTER -->
     <footer>
-        <p>© 2026 YAHU'SHAR'AL | Published by The Ibri Community</p>
+        <div class="footer-content">
+            <div class="footer-logo-img-container">
+                <img src="/images/ibri-community-network-primary-logo.png" alt="YAHU'SHAR'AL Logo" class="footer-logo-img">
+            </div>
+            <div class="social-icons">
+                <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="#" aria-label="Spotify"><i class="fa-brands fa-spotify"></i></a>
+            </div>
+            <p class="copyright">&copy; 2026 YAHU'SHAR'AL | Published by The Ibri Community</p>
+        </div>
     </footer>
 
+    <!-- Scripts -->
+    <script src="/js/app.js"></script>
     <script src="https://vjs.zencdn.net/8.6.1/video.min.js"></script>
     
     <script>
         var player = videojs('ibricommunity-player', { liveui: true });
 
-        // Custom logic to replace default error with a branded offline message
         player.on('error', function() {
             var overlay = document.createElement('div');
             overlay.className = 'custom-offline-overlay';
