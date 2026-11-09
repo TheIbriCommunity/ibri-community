@@ -28,22 +28,39 @@
             color: var(--deep-charcoal);
         }
 
-        header, footer {
+        /* Mirrored Homepage Header Layout */
+        header {
+            background-color: var(--deep-olive);
+            border-bottom: 4px solid var(--bronze-gold);
+            padding: 1rem 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 4%;
+        }
+
+        .logo-left img, .logo-right img {
+            max-height: 95px;
+            width: auto;
+            display: block;
+        }
+
+        /* Circular clipping for the scroll logo to match homepage */
+        .logo-right img {
+            border-radius: 50%;
+        }
+
+        footer {
             background-color: var(--deep-olive);
             color: var(--off-white-bone);
             padding: 1.5rem 1rem;
             text-align: center;
-            border-bottom: 4px solid var(--bronze-gold);
-        }
-        
-        .brand-logo {
-            max-height: 110px;
-            width: auto;
-        }
-
-        footer {
             border-top: 4px solid var(--bronze-gold);
-            border-bottom: none;
             font-family: 'Playfair Display', serif;
         }
 
@@ -65,7 +82,7 @@
             width: 100%;
         }
 
-        /* Hide the ugly default Video.js error dialog */
+        /* Hide the default Video.js error dialog */
         .vjs-error-display {
             display: none !important;
         }
@@ -80,7 +97,7 @@
             background: #000;
             color: var(--warm-sand);
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             z-index: 10;
         }
 
@@ -120,10 +137,17 @@
 <body>
 
     <header>
-        <a href="/">
-            <!-- Adjust this path if your logo is in a different folder -->
-            <img src="/images/ibri-community-network-primary-logo.png" alt="The Ibri Community Network" class="brand-logo">
-        </a>
+        <div class="header-container">
+            <a href="/" class="logo-left">
+                <img src="/images/ibri-community-network-primary-logo.png" alt="YAHU'SHAR'AL Logo">
+            </a>
+            
+            <nav class="main-nav"></nav>
+            
+            <a href="/newsletter.html" class="logo-right">
+                <img src="/images/yahusharal-scroll-logo.jpg" alt="The Root and The Scroll Logo">
+            </a>
+        </div>
     </header>
 
     <main class="player-wrapper">
@@ -140,7 +164,7 @@
     </main>
 
     <footer>
-        <p>© 2026 The Ibri Community Network. All Rights Reserved.</p>
+        <p>© 2026 YAHU'SHAR'AL | Published by The Ibri Community</p>
     </footer>
 
     <script src="https://vjs.zencdn.net/8.6.1/video.min.js"></script>
